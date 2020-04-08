@@ -1,36 +1,76 @@
 /**
- * @name PluralKitWebhookColours
- * @authorLink https://github.com/0xlgs
- * @website https://github.com/0xlgs/PluralKitWebhookColours
+ * @name PKBlocker
+ * @authorLink https://github.com/ParanormalVibe
+ * @website https://github.com/ParanormalVibe/PkBlocker
  */
 
-class PluralKitWebhookColours {
-  getName() {return "PluralKit Webhook Colours";}
-  getDescription() {return "Modifies PluralKit webhook colours to match the colour a member has set in their profile.\n(Member must not be private!)";}
+class PKBlocker {
+  //#region Boilerplate
+  getName() {return "PKBlocker Webhook Colours";}
+  getDescription() {return "Grants the ability to place users of PluralKit on a block list.";}
   getVersion() {return "0.1";}
   getAuthor() {return "lgs";}
+  //#endregion
+  
+  constructor() {
+    this.enabled = false;
+  }
 
-  load() {}
-  start() {}
-  stop() {}
+  //#region Events
+  // load block list json
+  load() {
+
+  }
+
+  // start hiding messages from blocked users
+  start() { 
+    enabled = true;
+    // TODO: show PK blocklist
+  }
+
+  // stop hiding messages from blocked users
+  stop() { 
+    enabled = false;
+    // TODO: hide PK block list
+  }
 
   observer(changes) {
-    var node;
-    var message;
     console.log("Hi!")
-    try {
-      var nodeList = changes.addedNodes;
-      for (let i = 0; i < nodeList.length; i++) {
-        let item = nodeList[i];
-        console.log("Hi!2")
-        message = item.__reactInternalInstance$.memoizedProps.children[1].props.message;
-        if (message.author.bot) {
-          var PkRequest = new Request('https://api.pluralkit.me/msg/' + message.id);
-          fetch(PkRequest)
-          .then(response => { if (response.status === 200) { return response.text(); } else { } })
-          .then(response => { try { item.children[0].children[1].children[0].style.color = `#${JSON.parse(response).member.color}`; } catch (e) {}; });
-        }
-      }
-    } catch (e) {};
   }
+  //#endregion
+
+  //#region Functions
+  
+  //
+  loadBlockList() {
+
+  }
+
+  // Toggles the block list to show next to the friend list
+  enableBlockList() {
+
+  }
+
+  // Toggles the block list to be hidden from view
+  disableBlockList() {
+
+  }
+
+  // Clears and populates the users on the block list
+  populateBlockList() {
+
+  }
+
+  // Adds a user to the block list
+  blockUser() {
+    // show a block confirmation
+    // hide all of user's messages
+  }
+
+  // Removes a user from the block list
+  unblockUser() {
+
+  }
+
+  //#endregion
 }
