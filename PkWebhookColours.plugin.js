@@ -72,5 +72,9 @@ class PKBlocker {
 
   }
 
+  getSettingsPanel() {
+    
+  }
+
   //#endregion
 }
